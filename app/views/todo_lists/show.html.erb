@@ -1,15 +1,24 @@
 <div class="card-header d-flex justify-content-between">
-  <span>
-    <%= @todo_list.title %>
-  </span>
-  <%= link_to 'Edit', edit_todo_list_path(@todo_list), class: 'btn btn-secondary btn-sm' %>
-  <%= link_to 'Back', todo_lists_path(@todo_list), class: 'btn btn-secondary btn-sm' %>
+  <div>
+    <h4 class='m-1'><b><%= @todo_list.title %></b></h4>
+    <p class='text-secondary m-0'><small>100% Complete (12/12 Todo Items)</small></p>
+  </div>
+  <div>
+    <%= link_to 'Edit', edit_todo_list_path(@todo_list), class: 'btn btn-secondary' %>
+  </div>
 </div>
 
 <ul class='list-group'>
   <% @todo_list.todo_items.each do |todo_item| %>
     <li class='list-group-item'>
-      <%= link_to todo_item.description %>
+      <div class='d-flex justify-content-between'>
+        <span>
+          <%= link_to todo_item.description %>
+        </span>
+        <%= link_to '#', class: 'btn btn-success' do %>
+          <i class='fas fa-check'></i>
+        <% end %>
+      </div>
     </li>
   <% end %>
 </ul>
